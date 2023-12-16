@@ -1,6 +1,7 @@
 import { Pressable, Text, TouchableOpacity, View } from 'react-native'
 import { colors } from '../../utils/colors'
-import CustomText from '../CustomText/index'
+import CustomText from '../CustomText'
+import React from 'react'
 
 type Props = {
     text?: string
@@ -30,6 +31,7 @@ const CustomButton = ({ text, onPress, width, height, size, fontFam, elevation, 
                     text={text}
                     color={textColor || colors.white}
                     size={size || 17}
+                    weight={700}
                 />
             </View>
         </TouchableOpacity>

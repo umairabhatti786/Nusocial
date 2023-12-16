@@ -1,14 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, {useEffect} from 'react';
+import {Alert, LogBox, StyleSheet, View, Text} from 'react-native';
+import RouteNavigator from './src/routes/RouteNavigator';
 
-const App = () => {
+export const App = () => {
+  LogBox.ignoreAllLogs();
+
   return (
-    <View>
-      <Text>App</Text>
-    </View>
-  )
-}
+    <RouteNavigator />
+  );
+};
 
-export default App
-
-const styles = StyleSheet.create({})
+export default App;
