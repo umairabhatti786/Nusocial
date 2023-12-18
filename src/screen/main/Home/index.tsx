@@ -10,6 +10,7 @@ import { images } from '../../../assets'
 import { trendingBlog } from '../../../utils/Data'
 import CustomView from '../../../components/CustomView'
 import HomeModal from '../../../components/HomeModal'
+import ProfileCard from './ProfileCard'
 type Props = {
     navigation?: any
 }
@@ -18,7 +19,6 @@ const Home = ({ navigation }: Props) => {
     return (
         <ScreenLayout style={{}} >
             <View style={styles.container}>
-
                 <CustomMenu
                     isLiveChat
                     onPressLiveChat={() => {
@@ -50,7 +50,7 @@ const Home = ({ navigation }: Props) => {
                         flex: 1,
                     }}
                     scrollEnabled={false}
-                    keyExtractor={(item,index) => index.toString()}
+                    keyExtractor={(item, index) => index.toString()}
                     numColumns={3}
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={{
@@ -61,43 +61,10 @@ const Home = ({ navigation }: Props) => {
                     }}
                     renderItem={({ item, index }) => {
                         return (
-                            <Pressable
-                                onPress={() => {
-                                    navigation.navigate("Profile", { item: item })
-                                }}
-                                style={{
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    paddingVertical: 2,
-                                    marginHorizontal: 12
-                                }}
-                            >
-                                <Image
-                                    source={item?.image}
-                                    style={{
-                                        width: 94,
-                                        height: 94,
-                                        resizeMode: "cover",
-                                        borderRadius: 60
-                                    }}
-                                />
-                                <CustomText
-                                    text={item.title}
-                                    weight={800}
-                                    size={12}
-                                    fontFam='Arial'
-                                    style={{ marginTop: 20, marginBottom: 10 }}
-                                    color={colors.white}
-                                />
-                                <CustomText
-                                    text={"+"}
-                                    weight={800}
-                                    size={30}
-                                    fontFam='Arial'
-                                    color={colors.primary}
-                                    lineHeight={30}
-                                />
-                            </Pressable>
+                            <ProfileCard
+                                item={item}
+                                navigation={navigation}
+                            />
                         )
                     }}
                 />

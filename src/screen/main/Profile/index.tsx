@@ -18,6 +18,7 @@ import PostFour from '../../../components/PostFour'
 import CustomView from '../../../components/CustomView'
 import PostFive from '../../../components/PostFive'
 import { useRoute } from "@react-navigation/native";
+import ProfileSocialButton from './ProfileSocialButton'
 type Props = {
     navigation?: any
     items?: any
@@ -25,6 +26,7 @@ type Props = {
 
 const Profile = ({ navigation }: Props) => {
     const route = useRoute();
+    const item= route?.params?.item;
     const image = route?.params?.item?.image;
     const title = route?.params?.item?.title;
     console.log(image, title);
@@ -61,16 +63,57 @@ const Profile = ({ navigation }: Props) => {
                             style={{ marginTop: 15 }}
                         />
                     </View>
-                    <Pressable onPress={() => { setIsFolowing((prev) => prev === "+" ? "-" : "+") }} style={{ flex: 2 }}>
-                        <CustomText
-                            text={isFolowing}
-                            weight={500}
-                            size={50}
-                            fontFam='Arial'
-                            color={colors.primary}
-                            style={{ marginTop: "7%", marginLeft: 12 }}
-                        />
-                    </Pressable>
+                    <View style={{
+                        flex: 1,
+                    }}>
+                        <View>
+                            <Pressable onPress={() => { setIsFolowing((prev) => prev === "+" ? "-" : "+") }} style={{ flex: 2 }}>
+                                <CustomText
+                                    text={isFolowing}
+                                    weight={500}
+                                    size={50}
+                                    fontFam='Arial'
+                                    color={colors.primary}
+                                    style={{ marginTop: "7%", marginLeft: 12 }}
+                                />
+                            </Pressable>
+                        </View>
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                gap: 10,
+                                justifyContent: "center"
+                            }}
+                        >
+                            <ProfileSocialButton
+                                borderColor={colors.primary}
+                                icon={images.chat}
+                                bgColor={colors.white}
+                                onPress={() => {
+                                    navigation.navigate("ChatMessageList", { image: image, title: title })
+                                }}
+                            />
+                            <ProfileSocialButton
+                                borderColor={colors.primary}
+                                icon={images.call1}
+                                bgColor={colors.primary}
+                                onPress={() => {
+                                    navigation.navigate("VoiceCall", { image: image })
+                                }}
+                            />
+                            <ProfileSocialButton
+                                borderColor={colors.primary}
+                                icon={images.video}
+                                bgColor={colors.white}
+                                imageStyle={{
+                                    tintColor: colors.primary
+                                }}
+                                onPress={() => {
+                                    navigation.navigate("VideoCall", { image: image })
+                                }}
+                            />
+                        </View>
+                    </View>
                 </View>
                 <View
                     style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 15, paddingLeft: 35 }}

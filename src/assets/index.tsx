@@ -22,4 +22,13 @@ export const images = {
     home2: require("./png/home2.png"),
     user: require("./png/user.png"),
     user2: require("./png/user2.png"),
+    mute: require("./png/mute.png"),
+    call: require("./png/call.png"),
+    call1: require("./png/call1.png"),
+    speaker: require("./png/speaker.png"),
+    arrow: require("./png/Arrow.png"),
+    video: require("./png/video.png"),
+    file: require("./png/file.png"),
+    send: require("./png/send.png"),
+    chat: require("./png/chat.png"),
 }

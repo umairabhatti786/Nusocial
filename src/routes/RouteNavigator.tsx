@@ -15,6 +15,9 @@ import InviteFriends from '../screen/main/InviteFriends';
 import TermsConditions from '../screen/main/TermsConditions';
 import Settings from '../screen/main/Settings';
 import Lock from '../screen/main/Lock';
+import VoiceCall from '../screen/main/VoiceCall';
+import VideoCall from '../screen/main/VideoCall';
+import ChatMessageList from '../screen/main/ChatMessageList';
 export const navigationContainerRef = React.createRef();
 const RouteNavigator = () => {
     const [splashState, setSplashState] = useState(true)
@@ -32,9 +35,12 @@ const RouteNavigator = () => {
         >
             <Stack.Navigator
                 screenOptions={{ headerShown: false }}
-                initialRouteName='Splash'
+                initialRouteName='BottomNavigator'
             >
                 {splashState && <Stack.Screen name="Splash" component={Splash} />}
+                <Stack.Screen name="ChatMessageList" component={ChatMessageList} />
+                <Stack.Screen name="VideoCall" component={VideoCall} />
+                <Stack.Screen name="VoiceCall" component={VoiceCall} />
                 <Stack.Screen name="Register" component={Register} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Settings" component={Settings} />

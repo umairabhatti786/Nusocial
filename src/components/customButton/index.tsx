@@ -22,7 +22,7 @@ const CustomButton = ({ text, onPress, width, height, size, fontFam, elevation, 
     return (
         <TouchableOpacity
             onPress={onPress}
-            activeOpacity={0.9}
+            activeOpacity={0.5}
         >
             <View
                 style={{ ...style, width: width || "100%", height: height || 47, backgroundColor: bgColor || colors.primary, justifyContent: "center", alignItems: "center", borderRadius: borderRadius || 12, elevation: elevation, borderWidth: 2, borderColor: borderColor || colors.primary }}
