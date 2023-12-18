@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native'
 import ScreenLayout from '../../../components/ScreenLayout'
 import { colors } from '../../../utils/colors'
 import CustomText from '../../../components/CustomText'
@@ -9,12 +9,15 @@ import CustomView from '../../../components/CustomView'
 import { font } from '../../../utils/font'
 import CustomInput2 from '../../../components/CustomInput2'
 import CustomMenu2 from '../../../components/CustomMenu2'
+import CustomInput from '../../../components/CustomInput'
+import { images } from '../../../assets'
 type Props = {
     navigation?: any
 }
 
 const Admins = ({ navigation }: Props) => {
-
+    const [values, setValues] = useState([]);
+    const [inputValue, setInputValue] = useState("")
     return (
         <ScreenLayout style={{ paddingHorizontal: 40, paddingVertical: "15%" }} >
             <View style={{
@@ -33,12 +36,81 @@ const Admins = ({ navigation }: Props) => {
                             console.log(x);
                         }}
                     />
-                    <CustomInput2
-                        placeholder='Add Controllers'
-                        onChangeText={(x: any) => {
-                            console.log(x);
+                    <CustomView
+                        outerStyle={{
+                            marginTop: 40
                         }}
-                    />
+                        height={45}
+                        angles={175}
+                        width={"100%"}
+                        innerButtonStyle={{
+                            flexDirection: "row",
+                            alignItems: "center"
+                        }}
+                    >
+                        <View
+                            style={{
+                                flex: 1,
+                                flexDirection: "row"
+                            }}
+                        >
+                            {
+                                values.map((x) => {
+                                    return (
+                                        <TouchableOpacity
+                                            key={x}
+                                            style={{
+                                                paddingHorizontal: 10,
+                                                paddingVertical: 4,
+                                                backgroundColor: colors.primary,
+                                                borderRadius: 12,
+                                                marginHorizontal: 5
+                                            }}
+                                        >
+                                            <CustomText
+                                                text={x}
+                                                size={15}
+                                            />
+                                        </TouchableOpacity>
+                                    )
+                                })
+                            }
+                        </View>
+                        {values.length < 3 && <CustomInput
+                            textColor={'white'}
+                            style={{ paddingLeft: 20, width: "100%" }}
+                            placeholder={"Add Controllers"}
+                            onChangeText={(x: string) => {
+                                setInputValue(x);
+                            }}
+                            value={inputValue}
+
+                        />}
+                        <TouchableOpacity
+                            style={{
+                                height: "100%",
+                                width: "10%",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                            onPress={() => {
+                                if (inputValue) {
+                                    setInputValue("");
+                                    setValues([...values, inputValue])
+                                }
+                            }}
+                        >
+                            <Image
+                                source={images.add}
+                                style={{
+                                    width: 20,
+                                    height: 20,
+                                    resizeMode: "contain",
+                                    tintColor: colors.primary
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </CustomView>
                     <CustomInput2
                         placeholder='Website (Optional)'
                         onChangeText={(x: any) => {

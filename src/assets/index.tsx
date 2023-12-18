@@ -31,4 +31,7 @@ export const images = {
     file: require("./png/file.png"),
     send: require("./png/send.png"),
     chat: require("./png/chat.png"),
+    bgImage: require("./png/bgImage.png"),
+    bgImage2: require("./png/bgImage2.png"),
+    countBg: require("./png/countBg.png"),
 }

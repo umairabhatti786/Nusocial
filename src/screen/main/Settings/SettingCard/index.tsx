@@ -1,8 +1,9 @@
-import { Image, Pressable, StyleSheet, Platform, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Platform, View, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import CustomView from '../../../../components/CustomView'
 import CustomText from '../../../../components/CustomText'
 import { colors } from '../../../../utils/colors'
+import { images } from '../../../../assets'
 
 type Props = {
     text?: string
@@ -29,17 +30,24 @@ const SettingCard = ({ text }: Props) => {
                     setIsOn((prev) => !prev)
                 }}
                 style={{
-                    width: 40,
-                    height: 20,
-                    backgroundColor: isOn ? colors.primary : "#9DB2CE",
+                    width: 45,
+                    height: 50,
                     borderRadius: 30,
-                    justifyContent: "center",
-                    alignItems: "center"
                 }}
             >
-                <CustomText
-                    text={isOn ? "On" : "Off"}
-                />
+                <ImageBackground
+                    source={isOn ? images.bgImage : images.bgImage2}
+                    style={{
+                        flex: 1,
+                        justifyContent: "center",
+                        alignItems: "center"
+                    }}
+                    resizeMode='contain'
+                >
+                    <CustomText
+                        text={isOn ? "On" : "Off"}
+                    />
+                </ImageBackground>
             </Pressable>
         </CustomView>
     )

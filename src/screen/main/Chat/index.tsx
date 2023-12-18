@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Image, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native'
 import ScreenLayout from '../../../components/ScreenLayout'
 import { colors } from '../../../utils/colors'
 import CustomText from '../../../components/CustomText'
@@ -65,10 +65,9 @@ const Chat = ({ navigation }: Props) => {
                                     innerButtonStyle={{
                                         flexDirection: "row",
                                         paddingLeft: 10,
-                                        // justifyContent: "center",
                                         alignItems: "center"
                                     }}
-                                    height={65}
+                                    height={75}
                                 >
                                     <Image
                                         style={styles.image}
@@ -87,27 +86,31 @@ const Chat = ({ navigation }: Props) => {
                                                 text={item?.title}
                                                 weight={700}
                                                 fontFam='Arial'
-                                                size={14}
+                                                size={16}
                                             />
-                                            {item?.count && <View style={{
-                                                width: 18,
-                                                height: 18,
-                                                backgroundColor: colors.primary,
-                                                borderRadius: 15,
-                                                justifyContent: "center",
-                                                alignItems: "center"
-                                            }}>
+                                            {item?.count && <ImageBackground
+                                                source={images.countBg}
+                                                resizeMode={"contain"}
+                                                style={{
+                                                    width: 22,
+                                                    height: 22.1,
+                                                    backgroundColor: colors.primary,
+                                                    borderRadius: 15,
+                                                    justifyContent: "center",
+                                                    alignItems: "center"
+                                                }}
+                                            >
                                                 <CustomText
                                                     text={item?.count}
                                                     weight={700}
                                                 />
-                                            </View>}
+                                            </ImageBackground>}
                                         </View>
                                         <View style={styles.description}>
                                             <CustomText
                                                 text={item?.second}
                                                 weight={700}
-                                                size={12}
+                                                size={12.5}
                                                 fontFam='Arial'
                                             />
                                         </View>
@@ -161,7 +164,7 @@ const styles = StyleSheet.create({
     },
     chatList: {
         width: "100%",
-        height: 67,
+        height: 80,
         flexDirection: "row",
         alignItems: "center",
         shadowColor: '#040404',

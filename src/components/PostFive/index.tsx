@@ -1,19 +1,55 @@
-import { Pressable, StyleSheet, Platform, Image, View } from 'react-native'
+import { Pressable, StyleSheet, Platform, View, Linking } from 'react-native'
 import CustomText from '../CustomText'
 import React, { useState } from 'react'
 import { images } from '../../assets'
-import ShadowButton from '../ShadowButton'
 import CustomActions from '../CustomActions'
 import { colors } from '../../utils/colors'
 import ShadowButton2 from '../ShadowButton2'
 import CustomView from '../CustomView'
-
+import { useCameraPermissions } from '../../utils/Permissions/useCameraPermission'
+import { openSettings } from 'react-native-permissions'
+import ImagePicker from "react-native-image-crop-picker";
 type Props = {
 
 }
 
 const PostFive = ({ }: Props) => {
     const [isVisible, setIsVisible] = useState(false);
+    const { checkGalleryPermission } = useCameraPermissions();
+    const chooseFile = async () => {
+        console.log("ckdnkcndkcn");
+        const galleryRes = await checkGalleryPermission();
+
+        if (galleryRes == "granted" || galleryRes == "limited") {
+            // setIsVideoLoading && setIsVideoLoading(true);
+            console.log("CLICKED");
+            let options = {
+                mediaType: "mixed",
+                quality: 0.5,
+                base64: true,
+                selectionLimit: 5,
+                multiple: true,
+            };
+
+            ImagePicker.openPicker(options)
+                .then((response) => {
+                    console.log("responseData", response);
+                    setIsVisible(false);
+                })
+                .catch((error: any) => {
+                    console.log(error);
+                    setIsVisible(false);
+                });
+        } else {
+            if (galleryRes == "blocked") {
+                if (Platform.OS == "ios") {
+                    openSettings();
+                } else {
+                    Linking.openSettings();
+                }
+            }
+        }
+    };
     return (
         <View style={{
             backgroundColor: '#171616',
@@ -67,7 +103,11 @@ const PostFive = ({ }: Props) => {
                             gap: 10
                         }}
                     >
-                        <Pressable>
+                        <Pressable
+                            onPress={() => {
+                                chooseFile();
+                            }}
+                        >
                             <CustomText
                                 text={"Add Image"}
                                 size={16}

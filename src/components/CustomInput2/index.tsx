@@ -19,7 +19,7 @@ const CustomInput2 = ({ onChangeText, placeholder, textColor, height, style, mul
             outerStyle={{
                 marginTop: 40
             }}
-            height={height || 45}
+            height={height || 54}
             angles={175}
             width={"100%"}
         >
