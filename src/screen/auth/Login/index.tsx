@@ -4,7 +4,7 @@ import ScreenLayout from '../../../components/ScreenLayout'
 import { colors } from '../../../utils/colors'
 import CustomText from '../../../components/CustomText'
 import Checkbox from '../../../components/CheckBox'
-import CustomButton from '../../../components/CustomButton'
+import CustomButton from "../../../components/customButton/index";
 import CustomView from '../../../components/CustomView'
 import CustomInput from '../../../components/CustomInput'
 import {

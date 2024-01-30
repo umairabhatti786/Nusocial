@@ -6,7 +6,7 @@ import CustomText from '../../../components/CustomText'
 import { font } from '../../../utils/font'
 import { chatList } from '../../../utils/Data'
 import CustomModal from '../../../components/CustomModal'
-import CustomButton from '../../../components/CustomButton'
+import CustomButton from "../../../components/customButton/index";
 type Props = {}
 
 const LiveChat = (props: Props) => {
