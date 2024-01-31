@@ -7,6 +7,7 @@ import { colors } from '../../../utils/colors'
 type Props = {}
 
 const Splash = (props: Props) => {
+    
     return (
         <View style={styles.container}>
             <Image
