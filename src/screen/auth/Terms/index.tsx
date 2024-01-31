@@ -32,8 +32,8 @@ const Terms = ({ navigation }: Props) => {
                 />
                 <View
                     style={{
-                        paddingHorizontal: 40,
-                        marginTop: "10%"
+                        paddingHorizontal: 30,
+                        marginTop: "7%"
                     }}
                 >
                     <CustomText
@@ -65,7 +65,7 @@ const Terms = ({ navigation }: Props) => {
                 </View>
                 <View style={{
                     width: '80%',
-                    marginTop: "8%",
+                    marginTop: "10%",
                 }}>
                     <CustomButton
                         text='Continue'
